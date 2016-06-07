@@ -4,7 +4,7 @@
 You can open the documents locally without internet
 
 A list of documents
-- Python via `http://127.0.0.1:5000/python`
+- Python via `http://127.0.0.1:5000/docs/python`
 
 ## Build & run
 ```
