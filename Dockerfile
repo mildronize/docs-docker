@@ -24,3 +24,5 @@ RUN rm -rf /tmp/downloads && \
   apt-get purge -y unzip curl && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+
+RUN chmod 777 -R ${PUBLIC_HTML_LOCATION}
