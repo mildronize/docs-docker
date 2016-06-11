@@ -1,7 +1,7 @@
 FROM httpd:2.4
 # Install tools
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends unzip curl git && \
+    apt-get install -y --no-install-recommends unzip curl git ca-certificates && \
     mkdir -p /tmp/downloads
 WORKDIR /tmp/downloads
 
@@ -19,11 +19,12 @@ RUN curl -jksSL -o python.zip https://docs.python.org/3/archives/python-${PYTHON
 
 # ----------------- OpenTSDB Docs -----------------
 RUN git clone https://github.com/OpenTSDB/opentsdb.net.git && \
+    mkdir -p ${DOCS_LOCATION}/opentsdb && \
     cp -r opentsdb.net/docs/build/html/* ${DOCS_LOCATION}/opentsdb
 
 # Clear all downlaoded and unnecessary files
 RUN rm -rf /tmp/downloads && \
-  apt-get purge -y unzip curl git && \
+  apt-get purge -y unzip curl git ca-certificates && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
